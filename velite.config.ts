@@ -5,7 +5,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 const computedFields = <T extends { slug: string }>(data: T) => ({
   ...data,
-  slugAsParams: data.slug.split("/").slice(1).join("/"),
+  slugAsParams: data.slug.split("/").slice(1).join("/")
 });
 
 const hooks = defineCollection({
@@ -18,9 +18,9 @@ const hooks = defineCollection({
       description: s.string().max(999),
       date: s.date().optional(),
       published: s.boolean().default(true),
-      body: s.mdx(),
+      body: s.mdx()
     })
-    .transform(computedFields),
+    .transform(computedFields)
 });
 
 export default defineConfig({
@@ -30,7 +30,7 @@ export default defineConfig({
     assets: "public/static",
     base: "/static/",
     name: "[name]-[hash:6].[ext]",
-    clean: true,
+    clean: true
   },
   collections: { hooks },
   mdx: {
@@ -43,11 +43,11 @@ export default defineConfig({
           behavior: "wrap",
           properties: {
             className: ["subheading-anchor"],
-            ariaLabel: "Link to section",
-          },
-        },
-      ],
+            ariaLabel: "Link to section"
+          }
+        }
+      ]
     ],
-    remarkPlugins: [],
-  },
+    remarkPlugins: []
+  }
 });
