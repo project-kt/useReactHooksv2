@@ -1,0 +1,28 @@
+---
+title: useHasMounted
+description: Description for useHasMounted
+data: 2024-03-06
+published: true
+---
+
+# useHasMounted
+
+Welcome
+
+```tsx
+"use client";
+
+import { useEffect, useState } from "react";
+
+const useHasMounted = (): boolean => {
+  const [hasMounted, setHasMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  return hasMounted;
+};
+
+export default useHasMounted;
+```
