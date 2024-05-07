@@ -1,5 +1,13 @@
-import Link from "next/link";
+import Hero from "./_components/hero";
+import PopularHooks from "./_components/popular-hooks";
 
-export default function HomePage() {
-  return <main>t</main>;
+function Index(): React.JSX.Element {
+  return (
+    <main>
+      <Hero />
+      <PopularHooks />
+    </main>
+  );
 }
+
+export default Index;
