@@ -2,6 +2,7 @@
 
 import React from "react";
 import Icons from "./icons";
+import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -17,6 +18,8 @@ export default function Footer() {
           {` | © ${year}`}
         </p>
       </div>
+      <Button>ciao</Button>
+      <div className="bg-primary text-primary-foreground">Hello</div>
     </footer>
   );
 }

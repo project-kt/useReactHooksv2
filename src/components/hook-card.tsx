@@ -2,12 +2,13 @@
 
 import { type Hook } from "@/server/db/schema";
 import axios from "axios";
-import { ArrowUpRight, CheckCheck, CircleX, Copy, LoaderCircle } from "lucide-react";
+import { Atom, CheckCheck, CircleX, Copy, LoaderCircle, Rabbit } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import useHoverOutside from "./hooks/useHoverOutside";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
-import useHoverOutside from "./hooks/useHoverOutside";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 
 function HookCard({ hook, children }: { hook: Hook; children?: React.ReactNode }) {
   const [isPending, startTransition] = React.useTransition();
@@ -37,18 +38,17 @@ function HookCard({ hook, children }: { hook: Hook; children?: React.ReactNode }
   useHoverOutside(cardRef, () => setFileContent(null));
 
   return (
-    <Card ref={cardRef} className="group relative w-full hover:border-cyan-500" onClick={handleCopyHook}>
+    <Card ref={cardRef} className="group relative w-full hover:border-cyan-500">
       <CardHeader>
         <CardTitle className="text-gradient mb-2">{hook.name}</CardTitle>
         <CardDescription className="line-clamp-2">{hook.description}</CardDescription>
       </CardHeader>
       <CardFooter className="flex">
-        <Link href={hook.source!} className="text-gradient">
-          Discover
+        <Link href={hook.source!} className="text-gradient flex items-center">
+          Discover <Atom className="gradient ml-1 h-4 w-4" color="#52ddfd" />
         </Link>
+        <CardCopyAction isPending={isPending} fileContent={fileContent} />
       </CardFooter>
-      <CardCopyAction isPending={isPending} fileContent={fileContent} />
-      {children}
     </Card>
   );
 }
@@ -74,7 +74,20 @@ const CardCopyAction = ({
     }
   } else {
     return (
-      <Copy className="absolute right-8 top-4 hidden size-4 transition delay-150 duration-300 ease-in-out group-hover:block" />
+      <>
+        <HoverCard>
+          <HoverCardTrigger asChild={true}>
+            <Button size={"sm"} variant="ghost" className="ml-auto">
+              Fast copy code
+              <Rabbit className="ml-1 h-4 w-4" />
+            </Button>
+          </HoverCardTrigger>
+          <HoverCardContent side="right" className="w-[32rem]">
+            ss
+          </HoverCardContent>
+        </HoverCard>
+        <Copy className="absolute right-8 top-4 hidden size-4 transition delay-150 duration-300 ease-in-out group-hover:block" />
+      </>
     );
   }
 };
