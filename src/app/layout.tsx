@@ -22,10 +22,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={cn("bg-background flex flex-col font-sans antialiased", fontSans.variable)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar />
-          <div className="container">
-            {children}
-            <Footer />
-          </div>
+          <div className="container">{children}</div>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

@@ -37,14 +37,10 @@ function HookCard({ hook, children }: { hook: Hook; children?: React.ReactNode }
   useHoverOutside(cardRef, () => setFileContent(null));
 
   return (
-    <Card
-      ref={cardRef}
-      className="group relative w-full transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 hover:border-cyan-500"
-      onClick={handleCopyHook}
-    >
+    <Card ref={cardRef} className="group relative w-full hover:border-cyan-500" onClick={handleCopyHook}>
       <CardHeader>
-        <CardTitle className="text-gradient">{hook.name}</CardTitle>
-        <CardDescription>{hook.description}</CardDescription>
+        <CardTitle className="text-gradient mb-2">{hook.name}</CardTitle>
+        <CardDescription className="line-clamp-2">{hook.description}</CardDescription>
       </CardHeader>
       <CardFooter className="flex">
         <Link href={hook.source!} className="text-gradient">
