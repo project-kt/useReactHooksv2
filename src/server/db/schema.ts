@@ -30,10 +30,10 @@ export const hooksRelations = relations(hooks, ({ many }) => ({
 export const hooksStatistics = createTable("hooksStatistics", {
   id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
   hookId: int("hookId", { mode: "number" }),
-  clickCount: int("clickCount", { mode: "number" }),
-  copyCount: int("copyCount", { mode: "number" }),
-  usefullCount: int("usefullCount", { mode: "number" }),
-  usefulCount: int("usefulCount", { mode: "number" }),
+  clickCount: int("clickCount", { mode: "number" }).default(0),
+  copyCount: int("copyCount", { mode: "number" }).default(0),
+  usefullCount: int("usefullCount", { mode: "number" }).default(0),
+  uselessCount: int("uselessCount", { mode: "number" }).default(0),
   createdAt: int("created_at", { mode: "timestamp" })
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
