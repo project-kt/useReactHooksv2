@@ -1,5 +1,4 @@
 import HookCard from "@/components/hook-card";
-import HookShow from "@/components/hook-show";
 import { getAllHooks } from "@/server/db/queries";
 import React from "react";
 
@@ -16,9 +15,8 @@ async function PopularHooks(): Promise<React.JSX.Element | undefined> {
         <div className="grid gap-4 lg:grid-cols-4">
           {[...data].map((hook) => {
             return (
-              <HookCard key={hook.id} hook={hook}>
-                <HookShow fileSource={hook.source!} />
-              </HookCard>
+              <HookCard key={hook.id} hook={hook} />
+              // <HookShow fileSource={hook.source!} />
             );
           })}
         </div>
