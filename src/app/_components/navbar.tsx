@@ -28,9 +28,10 @@ export default function Navbar(): React.JSX.Element {
       href: "/contact"
     }
   ];
+
   return (
-    <nav className="sticky top-0 z-10 flex h-16 items-center gap-4  bg-background/80 px-4 py-6 backdrop-blur-sm md:px-6 ">
-      <div className="hidden w-full flex-col text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm  lg:gap-6">
+    <nav className="sticky top-0 z-10 flex h-16 items-center gap-4 bg-background/80 px-4 py-6 backdrop-blur-sm md:px-6">
+      <div className="hidden w-full flex-col text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
         <Logo />
         <NavbarMenu links={navbarLinks} />
         <div className="ml-auto">

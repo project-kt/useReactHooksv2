@@ -6,6 +6,7 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import Link from "next/link";
+import CopyButton from "./copy-button";
 
 const useMDXComponents = (code: string) => {
   const fn = new Function(code);
@@ -84,6 +85,22 @@ const components = {
       className={cn("border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right", className)}
       {...props}
     />
+  ),
+  pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => {
+    return (
+      <CopyButton>
+        <pre
+          className={cn(
+            "mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-sm border bg-zinc-950 p-4 dark:bg-zinc-900",
+            className
+          )}
+          {...props}
+        />
+      </CopyButton>
+    );
+  },
+  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <code className={cn("relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm", className)} {...props} />
   ),
   Steps: ({ ...props }) => (
     <div className="[&>h3]:step steps mb-12 ml-4 border-l pl-8 [counter-reset:step]" {...props} />
