@@ -11,7 +11,7 @@ function HooksSidebar({ items }: { items: NavItem[] }): React.JSX.Element | unde
         <HooksSidebarSheet items={items} />
       </div>
       <div className="hidden flex-col gap-2 lg:flex">
-        <Link href="/docs" className="text-primary text-lg font-semibold">
+        <Link href="/docs" className="text-lg font-semibold text-primary">
           React Hooks
         </Link>
         <HooksSidebarLinks items={items} />
