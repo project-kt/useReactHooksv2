@@ -1,9 +1,11 @@
 import HookCard from "@/components/hook-card";
-import { getAllHooks } from "@/server/db/queries";
+import { getPopularHooks } from "@/server/db/queries";
 import React from "react";
 
 async function PopularHooks(): Promise<React.JSX.Element | undefined> {
-  const data = await getAllHooks();
+  const data = await getPopularHooks();
+
+  console.log(data);
 
   if (data && data.length > 0) {
     return (
@@ -15,7 +17,7 @@ async function PopularHooks(): Promise<React.JSX.Element | undefined> {
         <div className="grid gap-4 lg:grid-cols-4">
           {[...data].map((hook) => {
             return (
-              <HookCard key={hook.id} hook={hook} />
+              <HookCard key={hook.hooks.id} hook={hook.hooks} />
               // <HookShow fileSource={hook.source!} />
             );
           })}

@@ -8,6 +8,7 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
+import { addHookToLocalStorage } from "@/lib/localStorage";
 
 function HookCard({ hook }: { hook: Hook }) {
   return (
@@ -18,7 +19,8 @@ function HookCard({ hook }: { hook: Hook }) {
       </CardHeader>
       <CardFooter className="flex">
         <Link href={`/docs/${hook.name}`} className="flex items-center">
-          Discover <Atom className="ml-1 h-4 w-4" color="#52ddfd" />
+          Discover
+          <Atom className="ml-2 h-4 w-4" color="#52ddfd" />
         </Link>
         <CardCopyAction hook={hook} />
       </CardFooter>
@@ -40,6 +42,7 @@ const CardCopyAction = ({ hook }: { hook: Hook }): React.JSX.Element => {
 
       setFileContent(decodedContent);
       await copyToClipboard(decodedContent);
+      addHookToLocalStorage(hook.id);
     } catch (error) {
       console.error("Error fetching file content:", error);
       setFileContent(null);
