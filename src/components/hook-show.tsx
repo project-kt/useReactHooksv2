@@ -16,13 +16,13 @@ async function HookShow({ fileSource }: { fileSource: string }): Promise<React.J
         <HoverCardTrigger asChild={true}>
           <Button
             variant="ghost"
-            className="hover:bg-secondary absolute right-0 top-0 h-full items-center justify-center rounded-l-none rounded-r-md p-0.5 opacity-0 transition duration-150 ease-in-out group-hover:opacity-100"
+            className="absolute right-0 top-0 h-full items-center justify-center rounded-l-none rounded-r-md p-0.5 opacity-0 transition duration-150 ease-in-out hover:bg-secondary group-hover:opacity-100"
           >
             <ChevronRight className="size-4" />
           </Button>
         </HoverCardTrigger>
         <HoverCardContent side="right" className="w-[32rem]">
-          <pre className="bg-secondary overflow-auto rounded-md p-2">
+          <pre className="overflow-auto rounded-md bg-secondary p-2">
             <code className="text-xs">{decodedContent}</code>
           </pre>
         </HoverCardContent>
