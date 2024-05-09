@@ -18,8 +18,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={cn("bg-background flex flex-col font-sans antialiased", fontSans.variable)}>
+    <html lang="en" suppressHydrationWarning={true}>
+      <body className={fontSans.variable}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar />
           <div className="container">{children}</div>

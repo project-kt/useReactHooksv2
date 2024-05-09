@@ -8,18 +8,14 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="container h-24">
-      <div className="mt-5 flex h-24 items-center justify-between gap-4">
-        <div>
-          <Icons />
-        </div>
-        <p className="text-muted-foreground text-center text-sm leading-loose md:text-left">
-          <span className="text-gradient">useReactHooks</span>
-          {` | © ${year}`}
-        </p>
+    <footer className="container bottom-0 mt-5 flex h-16 items-center gap-4">
+      <div>
+        <Icons />
       </div>
-      <Button>ciao</Button>
-      <div className="bg-primary text-primary-foreground">Hello</div>
+      <p className="ml-auto text-sm text-muted-foreground">
+        <span className="text-primary">useReactHooks</span>
+        {` | © ${year}`}
+      </p>
     </footer>
   );
 }

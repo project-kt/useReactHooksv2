@@ -9,7 +9,7 @@ export default function logo() {
         <Image src={reactImage} alt="react" className="origin-center" fill={true} sizes="48px" />
       </div>
       <Link href={"/"}>
-        <h3 className="text-gradient whitespace-nowrap text-2xl font-bold">useReactHooks</h3>
+        <h3 className="whitespace-nowrap text-2xl font-bold text-primary">useReactHooks</h3>
       </Link>
     </div>
   );
