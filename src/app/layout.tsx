@@ -1,9 +1,8 @@
 import { ThemeProvider } from "@/components/theme-provider";
-import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
 import { Inter as FontSans } from "next/font/google";
-import Navbar from "./_components/navbar";
 import Footer from "./_components/footer";
+import Navbar from "./_components/navbar";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -21,9 +20,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning={true}>
       <body className={fontSans.variable}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <Navbar />
-          <div className="container">{children}</div>
-          <Footer />
+          <div className="flex h-screen flex-col">
+            <Navbar />
+            <div className="container flex-1">{children}</div>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>

@@ -2,16 +2,17 @@
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { docsConfig } from "@/config/docs";
 import { Menu } from "lucide-react";
+import { useState } from "react";
+import HooksSidebarLinks from "../docs/_components/hooks-sidebar-links";
 import Icons from "./icons";
 import Logo from "./logo";
 import { type NavBarLink } from "./navbar";
 import NavbarMenu from "./navbar-menu";
-import { useState } from "react";
 
 export default function MobileMenu({ links }: { links: NavBarLink[] }) {
-  const [open, setOpen] = useState<boolean>(false);
-
+  const [open, setOpen] = useState(false);
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
@@ -22,15 +23,18 @@ export default function MobileMenu({ links }: { links: NavBarLink[] }) {
       </SheetTrigger>
       <SheetContent side="left" className="w-full bg-background/80 backdrop-blur-sm">
         <div className="flex h-full flex-col">
-          <div>
+          <div className="sticky top-0 pb-3">
             <Logo />
           </div>
-          <div className="flex flex-1">
-            <div className="my-auto flex w-full flex-col gap-y-4">
+          <div className="flex h-full flex-1 overflow-y-auto py-3">
+            <div className="flex w-full flex-col gap-y-3" onClick={() => setOpen(false)}>
               <NavbarMenu links={links} />
+              <HooksSidebarLinks items={docsConfig} />
             </div>
           </div>
-          <Icons />
+          <div className="sticky bottom-0 pt-3">
+            <Icons />
+          </div>
         </div>
       </SheetContent>
     </Sheet>

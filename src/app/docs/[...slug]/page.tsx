@@ -3,6 +3,7 @@ import { MDXContent } from "@/components/mdx-components";
 import { notFound } from "next/navigation";
 import React from "react";
 import "@/styles/mdx.css";
+import DocHeader from "../_components/doc-header";
 
 type HookPageProps = {
   params: {
@@ -30,8 +31,7 @@ async function HookDocsIndex({ params }: HookPageProps): Promise<React.JSX.Eleme
 
   return (
     <article>
-      <h1>{hook.title}</h1>
-      <p>{hook.description}</p>
+      <DocHeader title={hook.title} description={hook.description} />
       <MDXContent code={hook.body} />
     </article>
   );
