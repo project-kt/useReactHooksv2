@@ -4,6 +4,7 @@ import Icons from "./icons";
 import Logo from "./logo";
 import MobileMenu from "./mobile-menu";
 import NavbarMenu from "./navbar-menu";
+import SearchCommand from "@/components/search-command";
 
 export type NavBarLink = {
   title: string;
@@ -30,6 +31,7 @@ export default function Navbar(): React.JSX.Element {
     <nav className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 py-6 backdrop-blur-sm md:px-6">
       <div className="hidden w-full items-center lg:flex">
         <Logo />
+        <SearchCommand />
         <div className="flex gap-x-3">
           <NavbarMenu links={navbarLinks} />
         </div>

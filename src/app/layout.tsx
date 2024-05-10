@@ -56,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <head>
-        <title>Tedy Gabriel Moisa | Frontend Developer</title>
+        <title>{`${siteConfig.title} | ${siteConfig.description}`}</title>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body className={fontSans.variable}>
