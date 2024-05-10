@@ -1,12 +1,9 @@
 import { ModeToggle } from "@/components/mode-toggle";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
 import type React from "react";
-import Logo from "./logo";
-import NavbarMenu from "./navbar-menu";
 import Icons from "./icons";
+import Logo from "./logo";
 import MobileMenu from "./mobile-menu";
+import NavbarMenu from "./navbar-menu";
 
 export type NavBarLink = {
   title: string;
@@ -20,12 +17,12 @@ export default function Navbar(): React.JSX.Element {
       href: "/"
     },
     {
-      title: "Documentation",
-      href: "/docs"
-    },
-    {
       title: "Contact",
       href: "/contact"
+    },
+    {
+      title: "Documentation",
+      href: "/docs"
     }
   ];
 

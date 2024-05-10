@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { docsConfig } from "@/config/docs";
 import { Menu } from "lucide-react";
 import { useState } from "react";
@@ -10,6 +10,7 @@ import Icons from "./icons";
 import Logo from "./logo";
 import { type NavBarLink } from "./navbar";
 import NavbarMenu from "./navbar-menu";
+import { Separator } from "@/components/ui/separator";
 
 export default function MobileMenu({ links }: { links: NavBarLink[] }) {
   const [open, setOpen] = useState(false);
@@ -27,7 +28,7 @@ export default function MobileMenu({ links }: { links: NavBarLink[] }) {
             <Logo />
           </div>
           <div className="flex h-full flex-1 overflow-y-auto py-3">
-            <div className="flex w-full flex-col gap-y-3">
+            <div className="flex w-full flex-col gap-y-3" onClick={() => setOpen(false)}>
               <NavbarMenu links={links} />
               <HooksSidebarLinks items={docsConfig} />
             </div>

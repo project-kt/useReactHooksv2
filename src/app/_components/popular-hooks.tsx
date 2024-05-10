@@ -10,7 +10,7 @@ async function PopularHooks(): Promise<React.JSX.Element | undefined> {
     return (
       <section>
         <div className="mb-4 flex flex-row items-center gap-x-3">
-          <span className="text-main text-3xl">#</span>
+          <span className="text-main text-gradient text-3xl">#</span>
           <h4 className="text-2xl font-extrabold">Popular Hooks</h4>
         </div>
         <div className="grid gap-4 lg:grid-cols-4">
