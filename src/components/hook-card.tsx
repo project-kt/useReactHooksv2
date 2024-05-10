@@ -11,6 +11,10 @@ import { Button } from "./ui/button";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 
 function HookCard({ hook }: { hook: Hook }) {
+  const handleIncrementClickCount = async () => {
+    await axios.get(`/api/hook/statistics/incrementClickCount?hookId=${hook.id}`);
+  };
+
   return (
     <Card className="hover:border-gradient group relative w-full">
       <CardHeader>
@@ -18,7 +22,7 @@ function HookCard({ hook }: { hook: Hook }) {
         <CardDescription className="line-clamp-2">{hook.description}</CardDescription>
       </CardHeader>
       <CardFooter className="flex">
-        <Link href={`/docs/${hook.name}`} className="flex items-center">
+        <Link href={`/docs/${hook.name}`} className="flex items-center" onClick={handleIncrementClickCount}>
           Discover
           <Atom className="ml-2 h-4 w-4" color="#52ddfd" />
         </Link>
@@ -42,7 +46,6 @@ const CardCopyAction = ({ hook }: { hook: Hook }): React.JSX.Element => {
 
       setFileContent(decodedContent);
       await copyToClipboard(decodedContent);
-      addHookToCookies(hook.id);
     } catch (error) {
       console.error("Error fetching file content:", error);
       setFileContent(null);
@@ -51,6 +54,9 @@ const CardCopyAction = ({ hook }: { hook: Hook }): React.JSX.Element => {
 
   const handleCopyHook = async () => {
     await fetchFileContent(hook.source!);
+    await axios.get(`/api/hook/statistics/incrementCopyCount?hookId=${hook.id}`);
+
+    addHookToCookies(hook.id);
 
     setTimeout(() => {
       setFileContent(null);

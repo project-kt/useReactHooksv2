@@ -5,6 +5,8 @@ import React from "react";
 import "@/styles/mdx.css";
 import DocHeader from "../_components/doc-header";
 import { type Metadata } from "next";
+import HookStatistics from "../_components/hook-statistics";
+import { getHookByName } from "@/server/db/queries";
 
 type HookPageProps = {
   params: {
@@ -56,14 +58,16 @@ export async function generateStaticParams(): Promise<HookPageProps["params"][]>
 
 async function HookDocsIndex({ params }: HookPageProps): Promise<React.JSX.Element> {
   const hook = await getHookBySlug(params);
+  const hookId = await getHookByName(hook!.title);
 
   if (!hook || !hook.published) {
     notFound();
   }
 
   return (
-    <article>
+    <article className="relative">
       <DocHeader title={hook.title} description={hook.description} />
+      {hookId && <HookStatistics hookId={hookId.id} />}
       <MDXContent code={hook.body} />
     </article>
   );
