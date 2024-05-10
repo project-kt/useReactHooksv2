@@ -3,15 +3,12 @@ import { siteConfig } from "@/config/site";
 import { Atom, Github } from "lucide-react";
 import Link from "next/link";
 import React from "react";
+import LogoAnimated from "./logo-animated";
 
 function Hero(): React.JSX.Element {
   return (
     <section className="flex  flex-col gap-y-8 py-20 text-center">
-      <div className="react-logo-container">
-        <span className="react-logo">
-          <span className="nucleo"></span>
-        </span>
-      </div>
+      <LogoAnimated />
       <h1 className="text-gradient text-4xl font-extrabold md:text-7xl">{siteConfig.description}</h1>
       <h2 className="mx-auto max-w-4xl text-neutral-400 md:text-3xl">
         Find and copy expertly crafted custom hooks with <span className="text-gradient">clear documentation</span>,

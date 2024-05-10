@@ -69,6 +69,7 @@ async function HookDocsIndex({ params }: HookPageProps): Promise<React.JSX.Eleme
       <DocHeader title={hook.title} description={hook.description} />
       {hookId && <HookStatistics hookId={hookId.id} />}
       <MDXContent code={hook.body} />
+      {hookId && <HookStatistics hookId={hookId.id} />}
     </article>
   );
 }
