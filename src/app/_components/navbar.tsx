@@ -1,12 +1,10 @@
 import { ModeToggle } from "@/components/mode-toggle";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
 import type React from "react";
-import Logo from "./logo";
-import NavbarMenu from "./navbar-menu";
 import Icons from "./icons";
+import Logo from "./logo";
 import MobileMenu from "./mobile-menu";
+import NavbarMenu from "./navbar-menu";
+import SearchCommand from "@/components/search-command";
 
 export type NavBarLink = {
   title: string;
@@ -20,24 +18,28 @@ export default function Navbar(): React.JSX.Element {
       href: "/"
     },
     {
-      title: "Documentation",
-      href: "/docs"
-    },
-    {
       title: "Contact",
       href: "/contact"
+    },
+    {
+      title: "Documentation",
+      href: "/docs"
     }
   ];
+
   return (
-    <nav className="sticky top-0 z-10 flex h-16 items-center gap-4  bg-background/80 px-4 py-6 backdrop-blur-sm md:px-6 ">
-      <div className="hidden w-full flex-col text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm  lg:gap-6">
+    <nav className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 py-6 backdrop-blur-sm md:px-6">
+      <div className="hidden w-full items-center lg:flex">
         <Logo />
-        <NavbarMenu links={navbarLinks} />
+        <div className="flex items-center gap-x-3">
+          <SearchCommand />
+          <NavbarMenu links={navbarLinks} />
+        </div>
         <div className="ml-auto">
           <Icons />
         </div>
       </div>
-      <div className="flex w-full gap-x-2 md:hidden">
+      <div className="flex w-full gap-x-2 lg:hidden">
         <Logo />
         <div className="ml-auto">
           <ModeToggle />

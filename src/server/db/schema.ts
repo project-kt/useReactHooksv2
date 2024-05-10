@@ -2,7 +2,7 @@
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
 import { relations, sql } from "drizzle-orm";
-import { index, int, sqliteTableCreator, text } from "drizzle-orm/sqlite-core";
+import { int, sqliteTableCreator, text } from "drizzle-orm/sqlite-core";
 
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
@@ -23,13 +23,13 @@ export const hooks = createTable("hooks", {
   updatedAt: int("updatedAt", { mode: "timestamp" })
 });
 
-export const hooksRelations = relations(hooks, ({ many }) => ({
-  hooksStatistics: many(hooksStatistics)
+export const hooksRelations = relations(hooks, ({ one }) => ({
+  hooksStatistics: one(hooksStatistics)
 }));
 
 export const hooksStatistics = createTable("hooksStatistics", {
   id: int("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
-  hookId: int("hookId", { mode: "number" }),
+  hookId: int("hookId", { mode: "number" }).references(() => hooks.id),
   clickCount: int("clickCount", { mode: "number" }).default(0),
   copyCount: int("copyCount", { mode: "number" }).default(0),
   usefullCount: int("usefullCount", { mode: "number" }).default(0),
@@ -39,13 +39,6 @@ export const hooksStatistics = createTable("hooksStatistics", {
     .notNull(),
   updatedAt: int("updatedAt", { mode: "timestamp" })
 });
-
-export const hooksStatisticsRelations = relations(hooksStatistics, ({ one }) => ({
-  hook: one(hooks, {
-    fields: [hooksStatistics.hookId],
-    references: [hooks.id]
-  })
-}));
 
 export type Hook = typeof hooks.$inferSelect;
 export type HookInsert = typeof hooks.$inferInsert;

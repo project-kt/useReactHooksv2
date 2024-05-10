@@ -3,8 +3,8 @@ import { MoveLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="flex h-screen  flex-col items-center justify-center">
-      <div className="flex flex-col  gap-5 text-center">
+    <div className="flex h-full flex-col items-center justify-center">
+      <div className="flex flex-col gap-5 text-center">
         <iframe
           src="https://giphy.com/embed/mYhd1NHQkHmZLiqN7M"
           frameBorder="0"

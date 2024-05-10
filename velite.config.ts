@@ -18,6 +18,7 @@ const hooks = defineCollection({
       description: s.string().max(999),
       date: s.date().optional(),
       published: s.boolean().default(true),
+      new: s.boolean().default(false),
       body: s.mdx()
     })
     .transform(computedFields)
