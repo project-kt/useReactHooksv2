@@ -27,7 +27,7 @@ export default function MobileMenu({ links }: { links: NavBarLink[] }) {
             <Logo />
           </div>
           <div className="flex h-full flex-1 overflow-y-auto py-3">
-            <div className="flex w-full flex-col gap-y-3">
+            <div className="flex w-full flex-col gap-y-3" onClick={() => setOpen(false)}>
               <NavbarMenu links={links} />
               <HooksSidebarLinks items={docsConfig} />
             </div>

@@ -25,7 +25,7 @@ export default function BreadcrumbMenu({ pageName }: BreadcrumbMenuProps): React
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>{pageName}</BreadcrumbPage>
+              <BreadcrumbPage className="text-gradient">{pageName}</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>

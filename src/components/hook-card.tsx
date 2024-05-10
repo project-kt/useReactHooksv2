@@ -38,13 +38,13 @@ function HookCard({ hook, children }: { hook: Hook; children?: React.ReactNode }
   useHoverOutside(cardRef, () => setFileContent(null));
 
   return (
-    <Card ref={cardRef} className="group relative w-full hover:border-primary">
+    <Card ref={cardRef} className="group relative w-full">
       <CardHeader>
-        <CardTitle className="mb-2 text-primary">{hook.name}</CardTitle>
+        <CardTitle className="text-gradient mb-2">{hook.name}</CardTitle>
         <CardDescription className="line-clamp-2">{hook.description}</CardDescription>
       </CardHeader>
       <CardFooter className="flex">
-        <Link href={hook.source!} className="flex items-center">
+        <Link href={hook.source!} className="text-gradient flex items-center">
           Discover <Atom className="ml-1 h-4 w-4" color="#52ddfd" />
         </Link>
         <CardCopyAction isPending={isPending} fileContent={fileContent} />
