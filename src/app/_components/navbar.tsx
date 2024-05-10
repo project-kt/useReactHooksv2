@@ -31,8 +31,8 @@ export default function Navbar(): React.JSX.Element {
     <nav className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/80 px-4 py-6 backdrop-blur-sm md:px-6">
       <div className="hidden w-full items-center lg:flex">
         <Logo />
-        <SearchCommand />
-        <div className="flex gap-x-3">
+        <div className="flex items-center gap-x-3">
+          <SearchCommand />
           <NavbarMenu links={navbarLinks} />
         </div>
         <div className="ml-auto">

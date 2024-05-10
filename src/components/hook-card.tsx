@@ -21,8 +21,12 @@ function HookCard({ hook }: { hook: Hook }) {
         <CardTitle className="text-gradient mb-2">{hook.name}</CardTitle>
         <CardDescription className="line-clamp-2">{hook.description}</CardDescription>
       </CardHeader>
-      <CardFooter className="flex">
-        <Link href={`/docs/${hook.name}`} className="flex items-center" onClick={handleIncrementClickCount}>
+      <CardFooter className="flex flex-wrap">
+        <Link
+          href={`/docs/${hook.name}`}
+          className="text-gradient flex items-center"
+          onClick={handleIncrementClickCount}
+        >
           Discover
           <Atom className="ml-2 h-4 w-4" color="#52ddfd" />
         </Link>
