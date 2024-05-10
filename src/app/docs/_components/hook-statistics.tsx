@@ -25,12 +25,12 @@ function HookStatistics({ hookId }: { hookId: number }): React.JSX.Element {
   };
 
   return (
-    <div className="absolute right-4 top-16 flex items-center gap-2">
+    <div className="flex items-center gap-2 py-5">
       <Button variant="outline" onClick={handleThumbsUpClick} disabled={isThumbsDownClicked}>
-        <ThumbsUp className={cn("size-4", isThumbsUpClicked && "text-green-500")} />
+        <ThumbsUp className={"h-4 w-4"} />
       </Button>
       <Button variant="outline" onClick={handleThumbsDownClick} disabled={isThumbsUpClicked}>
-        <ThumbsDown className={cn("size-4", isThumbsDownClicked && "text-red-500")} />
+        <ThumbsDown className={"h-4 w-4"} />
       </Button>
     </div>
   );
