@@ -16,6 +16,10 @@ export async function getPopularHooks() {
 }
 
 export async function getHooksByIds(ids: number[]) {
+  if (ids.length === 0) {
+    return [];
+  }
+
   return await db.query.hooks.findMany({
     where: (hooks, { inArray }) => inArray(hooks.id, ids)
   });

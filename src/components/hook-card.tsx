@@ -1,5 +1,6 @@
 "use client";
 
+import { addHookToCookies } from "@/lib/cookies";
 import { copyToClipboard } from "@/lib/utils";
 import { type Hook } from "@/server/db/schema";
 import axios from "axios";
@@ -8,13 +9,12 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
-import { addHookToLocalStorage } from "@/lib/localStorage";
 
 function HookCard({ hook }: { hook: Hook }) {
   return (
-    <Card className="group relative w-full hover:border-primary">
+    <Card className="hover:border-gradient group relative w-full">
       <CardHeader>
-        <CardTitle className="mb-2 text-primary">{hook.name}</CardTitle>
+        <CardTitle className="text-gradient mb-2">{hook.name}</CardTitle>
         <CardDescription className="line-clamp-2">{hook.description}</CardDescription>
       </CardHeader>
       <CardFooter className="flex">
@@ -42,7 +42,7 @@ const CardCopyAction = ({ hook }: { hook: Hook }): React.JSX.Element => {
 
       setFileContent(decodedContent);
       await copyToClipboard(decodedContent);
-      addHookToLocalStorage(hook.id);
+      addHookToCookies(hook.id);
     } catch (error) {
       console.error("Error fetching file content:", error);
       setFileContent(null);

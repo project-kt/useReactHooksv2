@@ -1,10 +1,12 @@
+"use server";
+
 import HookCard from "@/components/hook-card";
-import { getAllHooks } from "@/server/db/queries";
+import { getHooksByIds } from "@/server/db/queries";
+import { cookies } from "next/headers";
 import React from "react";
 
 async function RecentlyUsedHooks(): Promise<React.JSX.Element | undefined> {
-  // const data = await getHooksByIds(localStorageHooks);
-  const data = await getAllHooks();
+  const data = await getHooksByIds(JSON.parse(cookies().get("hooks")?.value ?? "[]") as number[]);
 
   if (data && data.length > 0) {
     return (

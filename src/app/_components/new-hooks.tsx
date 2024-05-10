@@ -18,7 +18,7 @@ async function NewHooks(): Promise<React.JSX.Element | undefined> {
           <h4 className="text-2xl font-extrabold">New Hooks</h4>
         </div>
         <div className="grid gap-4 lg:grid-cols-4">
-          {newHooks.map((hook) => {
+          {newHooks.slice(0, 4).map((hook) => {
             return <HookCard key={hook.id} hook={hook} />;
           })}
         </div>
