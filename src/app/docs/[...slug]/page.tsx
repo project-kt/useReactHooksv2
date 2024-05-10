@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import "@/styles/mdx.css";
 import DocHeader from "../_components/doc-header";
+import { type Metadata } from "next";
 
 type HookPageProps = {
   params: {
@@ -16,6 +17,37 @@ async function getHookBySlug(params: HookPageProps["params"]) {
   const hook = hooks.find((hook) => hook.slugAsParams === slug);
 
   return hook;
+}
+
+export async function generateMetadata({ params }: HookPageProps): Promise<Metadata> {
+  const hook = await getHookBySlug(params);
+
+  if (!hook) {
+    return {};
+  }
+
+  const ogSearchParams = new URLSearchParams();
+  ogSearchParams.set("title", hook.title);
+  // ogSearchParams.set("description", hook.description);
+
+  return {
+    title: hook.title,
+    description: hook.description,
+    openGraph: {
+      title: hook.title,
+      description: hook.description,
+      type: "website",
+      url: hook.slug,
+      images: [
+        {
+          url: `/api/og?${ogSearchParams.toString()}`,
+          width: 1200,
+          height: 630,
+          alt: hook.title
+        }
+      ]
+    }
+  };
 }
 
 export async function generateStaticParams(): Promise<HookPageProps["params"][]> {

@@ -6,6 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Copy, Send } from "lucide-react";
 import Link from "next/link";
+import { type Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Contact us!"
+};
 
 export default function Contact() {
   const [isCopied, setIsCopied] = useState<boolean>(false);
