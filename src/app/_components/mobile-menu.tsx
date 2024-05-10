@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetClose, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { docsConfig } from "@/config/docs";
 import { Menu } from "lucide-react";
 import { useState } from "react";
@@ -10,7 +10,6 @@ import Icons from "./icons";
 import Logo from "./logo";
 import { type NavBarLink } from "./navbar";
 import NavbarMenu from "./navbar-menu";
-import { Separator } from "@/components/ui/separator";
 
 export default function MobileMenu({ links }: { links: NavBarLink[] }) {
   const [open, setOpen] = useState(false);

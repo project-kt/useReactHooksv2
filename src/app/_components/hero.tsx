@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, Atom, File, Github, SquareArrowOutUpRight } from "lucide-react";
+import { Atom, Github } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
