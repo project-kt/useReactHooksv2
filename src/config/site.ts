@@ -1,7 +1,10 @@
 export const siteConfig = {
-  title: "useReactHooks",
+  title: "useReactHook",
   description: "Collection of React Hooks",
-  url: "https://useReactHooks.com"
+  url: "https://usereacthook.com",
+  links: {
+    github: "https://github.com/project-kt/usereacthook"
+  }
 };
 
 export type SiteConfig = typeof siteConfig;

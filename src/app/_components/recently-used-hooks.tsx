@@ -1,5 +1,3 @@
-"use server";
-
 import HookCard from "@/components/hook-card";
 import { getHooksByIds } from "@/server/db/queries";
 import { cookies } from "next/headers";
