@@ -8,7 +8,7 @@ import LogoAnimated from "./logo-animated";
 function Hero(): React.JSX.Element {
   return (
     <section className="flex  flex-col gap-y-8 py-20 text-center">
-      <LogoAnimated />
+      <LogoAnimated type={"hero"} />
       <h1 className="text-gradient text-4xl font-extrabold md:text-7xl">{siteConfig.description}</h1>
       <h2 className="mx-auto max-w-4xl text-neutral-400 md:text-3xl">
         Find and copy expertly crafted custom hooks with <span className="text-gradient">clear documentation</span>,
