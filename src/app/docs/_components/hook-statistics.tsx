@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ThumbsDown, ThumbsUp } from "lucide-react";
-import { cn } from "@/lib/utils";
 import axios from "axios";
+import { ThumbsDown, ThumbsUp } from "lucide-react";
+import React, { useState } from "react";
 
 function HookStatistics({ hookId }: { hookId: number }): React.JSX.Element {
   const [isThumbsUpClicked, setIsThumbsUpClicked] = useState(false);
