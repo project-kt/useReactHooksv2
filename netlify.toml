@@ -1,3 +1,4 @@
 [build]
-  command = "next build && cp -r .next public/.next"
-  publish = "public"
+  command = "next build && cp ./public/database.sqlite .next/"
+  publish = ".next"
+
