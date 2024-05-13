@@ -45,3 +45,5 @@ yarn-error.log*
 
 #velite
 .velite
+# Local Netlify folder
+.netlify
