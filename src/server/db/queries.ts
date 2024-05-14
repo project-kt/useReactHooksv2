@@ -21,31 +21,31 @@ export async function getHooksByIds(ids: number[]) {
   }
 
   return await db.query.hooks.findMany({
-    where: (hooks, { inArray }) => inArray(hooks.id, ids)
+    where: (hooks, { inArray }) => inArray(hooks.id, ids),
   });
 }
 
 export async function getHookById(id: number) {
   return await db.query.hooks.findMany({
-    where: (hooks, { eq }) => eq(hooks.id, id)
+    where: (hooks, { eq }) => eq(hooks.id, id),
   });
 }
 
 export async function getHookByName(name: string) {
   return await db.query.hooks.findFirst({
     columns: {
-      id: true
+      id: true,
     },
-    where: (hooks, { eq }) => eq(hooks.name, name)
+    where: (hooks, { eq }) => eq(hooks.name, name),
   });
 }
 
 export async function incrementHookCopyCount(id: number) {
   const currentCount = await db.query.hooksStatistics.findFirst({
-    where: (hooksStatistics, { eq }) => eq(hooksStatistics.id, id)
+    where: (hooksStatistics, { eq }) => eq(hooksStatistics.hookId, id),
   });
 
-  if (currentCount?.copyCount) {
+  if (currentCount && currentCount.copyCount !== null) {
     return await db
       .update(hooksStatistics)
       .set({ copyCount: currentCount.copyCount + 1 })
@@ -55,10 +55,10 @@ export async function incrementHookCopyCount(id: number) {
 
 export async function incrementHookUsefullCount(id: number) {
   const currentCount = await db.query.hooksStatistics.findFirst({
-    where: (hooksStatistics, { eq }) => eq(hooksStatistics.id, id)
+    where: (hooksStatistics, { eq }) => eq(hooksStatistics.hookId, id),
   });
 
-  if (currentCount?.usefullCount) {
+  if (currentCount && currentCount.usefullCount !== null) {
     return await db
       .update(hooksStatistics)
       .set({ usefullCount: currentCount.usefullCount + 1 })
@@ -68,10 +68,10 @@ export async function incrementHookUsefullCount(id: number) {
 
 export async function incrementHookUselessCount(id: number) {
   const currentCount = await db.query.hooksStatistics.findFirst({
-    where: (hooksStatistics, { eq }) => eq(hooksStatistics.id, id)
+    where: (hooksStatistics, { eq }) => eq(hooksStatistics.hookId, id),
   });
 
-  if (currentCount?.uselessCount) {
+  if (currentCount && currentCount.uselessCount !== null) {
     return await db
       .update(hooksStatistics)
       .set({ uselessCount: currentCount.uselessCount + 1 })
@@ -81,10 +81,10 @@ export async function incrementHookUselessCount(id: number) {
 
 export async function incrementHookClickCount(id: number) {
   const currentCount = await db.query.hooksStatistics.findFirst({
-    where: (hooksStatistics, { eq }) => eq(hooksStatistics.id, id)
+    where: (hooksStatistics, { eq }) => eq(hooksStatistics.hookId, id),
   });
 
-  if (currentCount?.clickCount) {
+  if (currentCount && currentCount.clickCount !== null) {
     return await db
       .update(hooksStatistics)
       .set({ clickCount: currentCount.clickCount + 1 })
